@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 7%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+    --primary: 7 87% 67%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 15 30% 96%;
+    --secondary-foreground: 0 0% 7%;
+    --muted: 15 20% 95%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 7 87% 95%;
+    --accent-foreground: 7 87% 40%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
+    --ring: 7 87% 67%;
+    --radius: 0.75rem;
+    --warm: 35 95% 55%;
+    --warm-foreground: 0 0% 100%;
+    --teal: 170 50% 45%;
+    --teal-foreground: 0 0% 100%;
+    --coral-light: 10 80% 97%;
+    --info: 210 70% 55%;
+    --info-foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 3px solid hsl(7 87% 67%);
+  outline-offset: 2px;
+}
