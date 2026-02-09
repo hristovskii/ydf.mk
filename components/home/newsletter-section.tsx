@@ -56,9 +56,9 @@ export function NewsletterSection() {
                 )}
               </button>
             </div>
-            <p className="text-xs text-primary-foreground/60">
+            {/* <p className="text-xs text-primary-foreground/60">
               {t("newsletter_copy_email")}
-            </p>
+            </p> */}
           </div>
         </FadeIn>
       </div>

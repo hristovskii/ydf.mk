@@ -4,6 +4,7 @@ import { PaySemesterTeaser } from "@/components/home/pay-semester-teaser";
 import { OpportunitiesTeaser } from "@/components/home/opportunities-teaser";
 import { SupportTeaser } from "@/components/home/support-teaser";
 import { NewsletterSection } from "@/components/home/newsletter-section";
+import { SponsorsSection } from "@/components/home/sponsors-section";
 
 export default function HomePage() {
   return (
@@ -13,6 +14,7 @@ export default function HomePage() {
       <PaySemesterTeaser />
       <OpportunitiesTeaser />
       <SupportTeaser />
+      <SponsorsSection />
       <NewsletterSection />
     </>
   );
