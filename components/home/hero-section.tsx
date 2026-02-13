@@ -9,22 +9,22 @@ export function HeroSection() {
   const { t } = useLocale();
 
   return (
-    <section className="relative overflow-hidden bg-foreground text-background">
+    <section className="relative overflow-hidden bg-background text-foreground">
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <img
           src="/images/hero-community.jpg"
           alt=""
-          className="h-full w-full object-cover opacity-20"
+          className="h-full w-full object-cover opacity-25"
         />
-        <div className="absolute inset-0 bg-foreground/50" />
+        <div className="absolute inset-0 bg-background/85" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-20 lg:px-8 lg:py-32">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div className="flex flex-col gap-6">
             <FadeIn delay={0} direction="up">
-              <div className="inline-flex w-fit items-center gap-2 rounded-full bg-primary/20 px-4 py-1.5 text-sm font-medium text-primary">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full bg-foreground/10 px-4 py-1.5 text-sm font-semibold text-foreground">
                 <Heart className="h-4 w-4" aria-hidden="true" />
                 {t("site_name_short")}
               </div>
@@ -35,12 +35,12 @@ export function HeroSection() {
               </h1>
             </FadeIn>
             <FadeIn delay={200} direction="up">
-              <p className="text-lg font-medium text-primary">
+              <p className="text-lg font-semibold text-foreground">
                 {t("hero_subtitle")}
               </p>
             </FadeIn>
             <FadeIn delay={300} direction="up">
-              <p className="max-w-xl text-base leading-relaxed opacity-80">
+              <p className="max-w-xl text-base leading-relaxed text-foreground/90">
                 {t("hero_body")}
               </p>
             </FadeIn>
@@ -55,13 +55,13 @@ export function HeroSection() {
                 </Link>
                 <Link
                   href="/opportunities"
-                  className="inline-flex items-center gap-2 rounded-lg border border-background/30 px-6 py-3 text-sm font-semibold transition-all hover:bg-background/10 hover:border-background/50"
+                  className="inline-flex items-center gap-2 rounded-lg border border-foreground/30 bg-foreground/10 px-6 py-3 text-sm font-semibold text-foreground transition-all hover:bg-foreground/15 hover:border-foreground/40"
                 >
                   {t("hero_cta_opportunities")}
                 </Link>
                 <Link
                   href="/pay-a-semester"
-                  className="inline-flex items-center gap-2 rounded-lg border border-background/30 px-6 py-3 text-sm font-semibold transition-all hover:bg-background/10 hover:border-background/50"
+                  className="inline-flex items-center gap-2 rounded-lg border border-foreground/30 bg-foreground/10 px-6 py-3 text-sm font-semibold text-foreground transition-all hover:bg-foreground/15 hover:border-foreground/40"
                 >
                   <GraduationCap className="h-4 w-4" aria-hidden="true" />
                   {t("hero_cta_pay_semester")}
@@ -87,34 +87,34 @@ export function HeroSection() {
 
         {/* Stats bar */}
         <FadeIn delay={600} direction="up">
-          <div className="mt-16 grid grid-cols-3 gap-6 rounded-2xl bg-background/10 p-6 backdrop-blur-sm lg:mt-20 lg:p-8">
+          <div className="mt-16 grid grid-cols-3 gap-6 rounded-2xl bg-foreground/10 p-6 backdrop-blur-sm lg:mt-20 lg:p-8">
             <div className="text-center">
               <CountUp
-                end={107}
+                end={400}
                 suffix="+"
                 className="text-3xl font-bold text-primary lg:text-4xl"
               />
-              <p className="mt-1 text-xs opacity-70 lg:text-sm">
+              <p className="mt-1 text-xs text-foreground/80 lg:text-sm">
                 {t("hero_stat_youth")}
               </p>
             </div>
             <div className="text-center">
               <CountUp
-                end={12}
+                end={111}
                 suffix="+"
                 className="text-3xl font-bold text-primary lg:text-4xl"
               />
-              <p className="mt-1 text-xs opacity-70 lg:text-sm">
+              <p className="mt-1 text-xs text-foreground/80 lg:text-sm">
                 {t("hero_stat_programs")}
               </p>
             </div>
             <div className="text-center">
               <CountUp
-                end={4}
+                end={7}
                 suffix="+"
                 className="text-3xl font-bold text-primary lg:text-4xl"
               />
-              <p className="mt-1 text-xs opacity-70 lg:text-sm">
+              <p className="mt-1 text-xs text-foreground/80 lg:text-sm">
                 {t("hero_stat_years")}
               </p>
             </div>

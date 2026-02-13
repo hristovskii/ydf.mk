@@ -196,7 +196,7 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+      <header className="sticky top-0 z-50 border-b bg-background backdrop-blur supports-[backdrop-filter]:bg-background">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
           {/* Logo */}
           <Link
@@ -210,7 +210,7 @@ export function Header() {
               className="h-9 w-9 object-contain"
             />
             <span className="text-lg font-bold text-foreground hidden sm:inline">
-              {t("site_name_short")}
+              YDF.MK
             </span>
           </Link>
 

@@ -12,6 +12,7 @@ import {
   Check,
 } from "lucide-react";
 import { useState } from "react";
+import { SponsorsSection } from "@/components/home/sponsors-section";
 
 export default function PayASemesterPage() {
   const { t } = useLocale();
@@ -26,7 +27,10 @@ export default function PayASemesterPage() {
 
   return (
     <>
-      <PageHeader title={t("pay_page_title")} description={t("pay_page_desc")} />
+      <PageHeader
+        title={t("pay_page_title")}
+        description={t("pay_page_desc")}
+      />
       <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
         {/* Impact stat */}
         <div className="mb-12 flex items-center justify-center">
@@ -80,9 +84,7 @@ export default function PayASemesterPage() {
                   <button
                     type="button"
                     onClick={copyAccount}
-                    aria-label={
-                      copied ? "Copied" : "Copy bank account number"
-                    }
+                    aria-label={copied ? "Copied" : "Copy bank account number"}
                     className="shrink-0 rounded-md p-1 text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {copied ? (
@@ -117,6 +119,7 @@ export default function PayASemesterPage() {
           </section>
         </div>
       </div>
+      <SponsorsSection />
     </>
   );
 }

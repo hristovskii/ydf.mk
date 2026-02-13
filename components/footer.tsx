@@ -38,7 +38,7 @@ export function Footer() {
                 alt=""
                 className="h-10 w-10 rounded-full"
               />
-              <span className="text-lg font-bold">{t("site_name_short")}</span>
+              <span className="text-lg font-bold">YDF.MK</span>
             </Link>
             <p className="text-sm leading-relaxed opacity-80">
               {t("hero_subtitle")}
