@@ -53,15 +53,18 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  const t = useCallback(
-    (key: string) => translate(key, locale),
-    [locale],
-  );
+  const t = useCallback((key: string) => translate(key, locale), [locale]);
 
   // Prevent flash of wrong locale text
   if (!mounted) {
     return (
-      <LocaleContext.Provider value={{ locale: defaultLocale, setLocale, t: (key: string) => translate(key, defaultLocale) }}>
+      <LocaleContext.Provider
+        value={{
+          locale: defaultLocale,
+          setLocale,
+          t: (key: string) => translate(key, defaultLocale),
+        }}
+      >
         {children}
       </LocaleContext.Provider>
     );

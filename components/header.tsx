@@ -94,7 +94,7 @@ function ThemeToggle({ tone = "default" }: { tone?: "default" | "inverse" }) {
           )}
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" sideOffset={6}>
+      <DropdownMenuContent align="end" sideOffset={6} className="min-w-[140px]">
         <DropdownMenuLabel>Theme</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuRadioGroup
@@ -167,7 +167,7 @@ function DesktopDropdown({
         />
       </button>
       {open && (
-        <ul className="absolute left-0 top-full z-50 mt-1 min-w-[180px] overflow-hidden rounded-lg border bg-popover shadow-lg">
+        <ul className="absolute left-0 top-full z-[1000] mt-1 min-w-[180px] overflow-hidden rounded-lg border bg-popover shadow-lg">
           {item.children?.map((child) => (
             <li key={child.href}>
               <Link
@@ -346,11 +346,15 @@ export function Header() {
           aria-modal="true"
           aria-label="Mobile navigation"
           className="fixed inset-0 top-[61px] z-[999] bg-background lg:hidden"
+          style={{ pointerEvents: "none" }}
         >
-          <div className="flex h-full flex-col overflow-y-auto">
+          <div
+            className="flex h-full flex-col overflow-y-auto"
+            style={{ pointerEvents: "auto" }}
+          >
             <div className="border-b px-4 py-3">
               <div className="flex items-center justify-between gap-3">
-                <LanguageSwitcher />
+                <LanguageSwitcher mobile />
                 <ThemeToggle />
               </div>
             </div>

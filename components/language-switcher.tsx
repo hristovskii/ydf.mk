@@ -2,13 +2,14 @@
 
 import { useLocale } from "@/lib/locale-context";
 import { type Locale, localeNames } from "@/lib/i18n";
-import { Globe } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
 export function LanguageSwitcher({
   tone = "default",
+  mobile = false,
 }: {
   tone?: "default" | "inverse";
+  mobile?: boolean;
 }) {
   const { locale, setLocale, t } = useLocale();
   const [open, setOpen] = useState(false);
@@ -53,14 +54,15 @@ export function LanguageSwitcher({
             : "text-foreground hover:bg-accent"
         }`}
       >
-        <Globe className="h-4 w-4" aria-hidden="true" />
-        <span>{locale.toUpperCase()}</span>
+        <span>{localeNames[locale]}</span>
       </button>
       {open && (
         <ul
           role="listbox"
           aria-label={t("language")}
-          className="absolute right-0 top-full z-50 mt-1 min-w-[140px] overflow-hidden rounded-lg border bg-popover shadow-lg"
+          className={`absolute top-full z-[1000] mt-1 overflow-hidden rounded-lg border bg-popover shadow-lg ${
+            mobile ? "left-0 w-[220px]" : "right-0 min-w-[180px]"
+          }`}
         >
           {(Object.keys(localeNames) as Locale[]).map((loc) => (
             <li
@@ -71,7 +73,7 @@ export function LanguageSwitcher({
                 setLocale(loc);
                 setOpen(false);
               }}
-              className={`flex w-full items-center px-4 py-2.5 text-sm transition-colors cursor-pointer hover:bg-accent ${
+              className={`flex items-center w-full px-4 py-2.5 text-sm transition-colors cursor-pointer hover:bg-accent ${
                 locale === loc
                   ? "font-semibold text-primary"
                   : "text-foreground"
