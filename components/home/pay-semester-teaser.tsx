@@ -9,7 +9,7 @@ export function PaySemesterTeaser() {
   const { t } = useLocale();
 
   return (
-    <section className="relative overflow-hidden bg-foreground py-16 text-background lg:py-24">
+    <section className="relative overflow-hidden bg-primary py-16 text-primary-foreground lg:py-24">
       <div className="absolute inset-0 z-0">
         <img
           src="/images/education.jpg"
@@ -21,7 +21,7 @@ export function PaySemesterTeaser() {
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <FadeIn direction="left">
             <div className="flex flex-col gap-6">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-foreground/15">
                 <GraduationCap
                   className="h-7 w-7 text-primary-foreground"
                   aria-hidden="true"
@@ -36,14 +36,14 @@ export function PaySemesterTeaser() {
               <div className="flex flex-wrap gap-3">
                 <Link
                   href="/pay-a-semester"
-                  className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:scale-[1.02] active:scale-[0.98]"
+                  className="inline-flex items-center gap-2 rounded-lg bg-primary-foreground px-6 py-3 text-sm font-semibold text-primary transition-all hover:bg-primary-foreground/90 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   {t("pay_semester_cta")}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-lg border border-background/30 px-6 py-3 text-sm font-semibold transition-all hover:bg-background/10"
+                  className="inline-flex items-center gap-2 rounded-lg border border-primary-foreground/40 px-6 py-3 text-sm font-semibold transition-all hover:bg-primary-foreground/10"
                 >
                   {t("pay_semester_apply")}
                 </Link>
@@ -52,13 +52,13 @@ export function PaySemesterTeaser() {
           </FadeIn>
           <FadeIn direction="right" delay={200}>
             <div className="flex justify-center" aria-hidden="true">
-              <div className="flex h-64 w-64 flex-col items-center justify-center rounded-full border-4 border-primary/30 bg-background/5 backdrop-blur-sm">
+              <div className="flex h-64 w-64 flex-col items-center justify-center rounded-full border-4 border-primary-foreground/30 bg-primary-foreground/10 backdrop-blur-sm">
                 <CountUp
                   end={107}
                   suffix="+"
-                  className="text-5xl font-bold text-primary"
+                  className="text-5xl font-bold text-primary-foreground"
                 />
-                <p className="mt-2 text-sm font-medium opacity-70">
+                <p className="mt-2 text-sm font-medium text-primary-foreground/80">
                   {t("hero_stat_youth")}
                 </p>
               </div>

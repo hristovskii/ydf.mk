@@ -5,7 +5,11 @@ import { type Locale, localeNames } from "@/lib/i18n";
 import { Globe } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
-export function LanguageSwitcher() {
+export function LanguageSwitcher({
+  tone = "default",
+}: {
+  tone?: "default" | "inverse";
+}) {
   const { locale, setLocale, t } = useLocale();
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -43,7 +47,11 @@ export function LanguageSwitcher() {
         aria-haspopup="true"
         aria-label={t("language")}
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+        className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+          tone === "inverse"
+            ? "text-primary-foreground hover:bg-primary-foreground/10"
+            : "text-foreground hover:bg-accent"
+        }`}
       >
         <Globe className="h-4 w-4" aria-hidden="true" />
         <span>{locale.toUpperCase()}</span>

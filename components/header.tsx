@@ -4,7 +4,17 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useLocale } from "@/lib/locale-context";
 import { LanguageSwitcher } from "@/components/language-switcher";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { useTheme } from "@/hooks/use-theme";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { ChevronDown, Menu, Monitor, Moon, Sun, X } from "lucide-react";
 
 interface NavItem {
   labelKey: string;
@@ -38,6 +48,76 @@ const navItems: NavItem[] = [
   },
   { labelKey: "nav_contact", href: "/contact" },
 ];
+
+function ThemeToggle({ tone = "default" }: { tone?: "default" | "inverse" }) {
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const currentTheme = mounted
+    ? theme === "system"
+      ? resolvedTheme
+      : theme
+    : "system";
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button
+          type="button"
+          className={`rounded-lg p-2 transition-colors ${
+            tone === "inverse"
+              ? "text-primary-foreground hover:bg-primary-foreground/10"
+              : "text-foreground hover:bg-accent"
+          }`}
+          aria-label="Toggle theme"
+        >
+          <span className="sr-only">Toggle theme</span>
+          {currentTheme === "light" ? (
+            <Sun
+              className={`h-4 w-4 transition-opacity ${mounted ? "opacity-100" : "opacity-0"}`}
+              aria-hidden="true"
+            />
+          ) : currentTheme === "dark" ? (
+            <Moon
+              className={`h-4 w-4 transition-opacity ${mounted ? "opacity-100" : "opacity-0"}`}
+              aria-hidden="true"
+            />
+          ) : (
+            <Monitor
+              className={`h-4 w-4 transition-opacity ${mounted ? "opacity-100" : "opacity-0"}`}
+              aria-hidden="true"
+            />
+          )}
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" sideOffset={6}>
+        <DropdownMenuLabel>Theme</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuRadioGroup
+          value={theme || "system"}
+          onValueChange={setTheme}
+        >
+          <DropdownMenuRadioItem value="system">
+            <Monitor className="h-4 w-4" />
+            System
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="light">
+            <Sun className="h-4 w-4" />
+            Light
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="dark">
+            <Moon className="h-4 w-4" />
+            Dark
+          </DropdownMenuRadioItem>
+        </DropdownMenuRadioGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
 
 function DesktopDropdown({
   item,
@@ -78,7 +158,7 @@ function DesktopDropdown({
         aria-expanded={open}
         aria-haspopup="true"
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+        className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-foreground/10"
       >
         {t(item.labelKey)}
         <ChevronDown
@@ -196,7 +276,7 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b bg-background backdrop-blur supports-[backdrop-filter]:bg-background">
+      <header className="sticky top-0 z-50 border-b border-primary/60 bg-primary text-primary-foreground shadow-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
           {/* Logo */}
           <Link
@@ -209,7 +289,7 @@ export function Header() {
               alt=""
               className="h-9 w-9 object-contain"
             />
-            <span className="text-lg font-bold text-foreground hidden sm:inline">
+            <span className="hidden text-lg font-bold text-primary-foreground sm:inline">
               YDF.MK
             </span>
           </Link>
@@ -224,7 +304,7 @@ export function Header() {
                 <Link
                   key={item.labelKey}
                   href={item.href}
-                  className="rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+                  className="rounded-lg px-3 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-foreground/10"
                 >
                   {t(item.labelKey)}
                 </Link>
@@ -236,7 +316,8 @@ export function Header() {
 
           {/* Desktop language switcher */}
           <div className="hidden items-center gap-2 lg:flex">
-            <LanguageSwitcher />
+            <ThemeToggle tone="inverse" />
+            <LanguageSwitcher tone="inverse" />
           </div>
 
           {/* Mobile hamburger */}
@@ -246,7 +327,7 @@ export function Header() {
             aria-expanded={mobileOpen}
             aria-label={mobileOpen ? t("close_menu") : t("open_menu")}
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="rounded-lg p-2 text-foreground transition-colors hover:bg-accent lg:hidden"
+            className="rounded-lg p-2 text-primary-foreground transition-colors hover:bg-primary-foreground/10 lg:hidden"
           >
             {mobileOpen ? (
               <X className="h-6 w-6" aria-hidden="true" />
@@ -268,7 +349,10 @@ export function Header() {
         >
           <div className="flex h-full flex-col overflow-y-auto">
             <div className="border-b px-4 py-3">
-              <LanguageSwitcher />
+              <div className="flex items-center justify-between gap-3">
+                <LanguageSwitcher />
+                <ThemeToggle />
+              </div>
             </div>
             <nav aria-label="Mobile navigation">
               <ul>

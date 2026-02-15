@@ -32,27 +32,27 @@ export function PageHeader({
   const crumbs = breadcrumbs || defaultBreadcrumbs;
 
   return (
-    <div className="relative overflow-hidden bg-foreground text-background">
+    <div className="relative overflow-hidden bg-muted text-foreground">
       {image && (
         <div className="absolute inset-0 z-0">
           <img
             src={image || "/placeholder.svg"}
             alt=""
-            className="h-full w-full object-cover opacity-20"
+            className="h-full w-full object-cover opacity-30"
           />
-          <div className="absolute inset-0 bg-foreground/60" />
+          <div className="absolute inset-0 bg-background/70" />
         </div>
       )}
       {!image && (
         <div className="absolute inset-0 z-0 opacity-[0.04]">
-          <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-primary" />
-          <div className="absolute -bottom-10 left-1/4 h-40 w-40 rounded-full bg-primary" />
+          <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-primary/20" />
+          <div className="absolute -bottom-10 left-1/4 h-40 w-40 rounded-full bg-primary/20" />
         </div>
       )}
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
         {/* Breadcrumbs */}
         <nav aria-label="Breadcrumb" className="mb-6">
-          <ol className="flex flex-wrap items-center gap-1 text-sm opacity-60">
+          <ol className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
             {crumbs.map((crumb, i) => (
               <li key={i} className="flex items-center gap-1">
                 {i > 0 && (
@@ -61,12 +61,14 @@ export function PageHeader({
                 {crumb.href ? (
                   <Link
                     href={crumb.href}
-                    className="transition-opacity hover:opacity-100"
+                    className="transition-colors hover:text-foreground"
                   >
                     {crumb.label}
                   </Link>
                 ) : (
-                  <span className="opacity-100 font-medium">{crumb.label}</span>
+                  <span className="font-medium text-foreground">
+                    {crumb.label}
+                  </span>
                 )}
               </li>
             ))}

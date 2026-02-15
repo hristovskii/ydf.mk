@@ -27,27 +27,32 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t bg-foreground text-background">
+    <footer className="border-t border-border bg-muted/40 text-foreground">
       <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
         <div className="grid gap-8 md:grid-cols-3">
           {/* Brand */}
           <div className="flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-2.5">
               <img
+                src="/images/ydfmk.png"
+                alt=""
+                className="h-10 w-10 rounded-full dark:hidden"
+              />
+              <img
                 src="/images/ydf-white.png"
                 alt=""
-                className="h-10 w-10 rounded-full"
+                className="hidden h-10 w-10 rounded-full dark:block"
               />
               <span className="text-lg font-bold">YDF.MK</span>
             </Link>
-            <p className="text-sm leading-relaxed opacity-80">
+            <p className="text-sm leading-relaxed text-muted-foreground">
               {t("hero_subtitle")}
             </p>
           </div>
 
           {/* Quick links */}
           <div>
-            <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider opacity-60">
+            <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
               {t("nav_organization")}
             </h2>
             <nav aria-label="Footer navigation">
@@ -55,7 +60,7 @@ export function Footer() {
                 <li>
                   <Link
                     href="/about"
-                    className="text-sm opacity-80 transition-opacity hover:opacity-100"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {t("nav_about")}
                   </Link>
@@ -63,7 +68,7 @@ export function Footer() {
                 <li>
                   <Link
                     href="/opportunities"
-                    className="text-sm opacity-80 transition-opacity hover:opacity-100"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {t("nav_opportunities")}
                   </Link>
@@ -71,7 +76,7 @@ export function Footer() {
                 <li>
                   <Link
                     href="/pay-a-semester"
-                    className="text-sm opacity-80 transition-opacity hover:opacity-100"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {t("nav_pay_semester")}
                   </Link>
@@ -79,7 +84,7 @@ export function Footer() {
                 <li>
                   <Link
                     href="/contact"
-                    className="text-sm opacity-80 transition-opacity hover:opacity-100"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {t("nav_contact")}
                   </Link>
@@ -90,13 +95,13 @@ export function Footer() {
 
           {/* Contact & Social */}
           <div>
-            <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider opacity-60">
+            <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
               {t("contact_follow_us")}
             </h2>
             <div className="flex flex-col gap-3">
               <a
                 href="mailto:ngo.ydf@gmail.com"
-                className="flex items-center gap-2 text-sm opacity-80 transition-opacity hover:opacity-100"
+                className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
                 <Mail className="h-4 w-4" aria-hidden="true" />
                 ngo.ydf@gmail.com
@@ -109,7 +114,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={t(link.labelKey)}
-                    className="rounded-lg p-2 opacity-80 transition-opacity hover:opacity-100"
+                    className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                   >
                     <link.icon className="h-5 w-5" aria-hidden="true" />
                   </a>
@@ -120,20 +125,20 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-background/20 pt-6 md:flex-row">
-          <p className="text-xs opacity-60">
+        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-border/60 pt-6 md:flex-row">
+          <p className="text-xs text-muted-foreground">
             &copy; {year} {t("site_name")}. {t("footer_rights")}
           </p>
           <div className="flex gap-4">
             <Link
               href="/accessibility"
-              className="text-xs opacity-60 transition-opacity hover:opacity-100"
+              className="text-xs text-muted-foreground transition-colors hover:text-foreground"
             >
               {t("footer_accessibility")}
             </Link>
             <Link
               href="/privacy"
-              className="text-xs opacity-60 transition-opacity hover:opacity-100"
+              className="text-xs text-muted-foreground transition-colors hover:text-foreground"
             >
               {t("footer_privacy")}
             </Link>

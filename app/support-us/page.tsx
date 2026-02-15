@@ -120,7 +120,7 @@ export default function SupportUsPage() {
         <div className="mt-12 text-center">
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-lg bg-foreground px-6 py-3 text-sm font-semibold text-background transition-colors hover:bg-foreground/90"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
           >
             {t("nav_contact")}
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
