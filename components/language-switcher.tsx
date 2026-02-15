@@ -63,21 +63,21 @@ export function LanguageSwitcher({
           className="absolute right-0 top-full z-50 mt-1 min-w-[140px] overflow-hidden rounded-lg border bg-popover shadow-lg"
         >
           {(Object.keys(localeNames) as Locale[]).map((loc) => (
-            <li key={loc} role="option" aria-selected={locale === loc}>
-              <button
-                type="button"
-                onClick={() => {
-                  setLocale(loc);
-                  setOpen(false);
-                }}
-                className={`flex w-full items-center px-4 py-2.5 text-sm transition-colors hover:bg-accent ${
-                  locale === loc
-                    ? "font-semibold text-primary"
-                    : "text-foreground"
-                }`}
-              >
-                {localeNames[loc]}
-              </button>
+            <li
+              key={loc}
+              role="option"
+              aria-selected={locale === loc}
+              onClick={() => {
+                setLocale(loc);
+                setOpen(false);
+              }}
+              className={`flex w-full items-center px-4 py-2.5 text-sm transition-colors cursor-pointer hover:bg-accent ${
+                locale === loc
+                  ? "font-semibold text-primary"
+                  : "text-foreground"
+              }`}
+            >
+              {localeNames[loc]}
             </li>
           ))}
         </ul>
