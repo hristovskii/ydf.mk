@@ -41,7 +41,7 @@ export default function PayASemesterPage() {
                 aria-hidden="true"
               />
             </div>
-            <span className="text-4xl font-bold text-primary">107+</span>
+            <span className="text-4xl font-bold text-primary">111+</span>
             <p className="max-w-sm text-sm text-muted-foreground">
               {t("pay_page_impact")}
             </p>

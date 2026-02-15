@@ -3,7 +3,14 @@
 import { useState, type FormEvent } from "react";
 import { useLocale } from "@/lib/locale-context";
 import { PageHeader } from "@/components/page-header";
-import { Mail, Facebook, Linkedin, Instagram, Send, AlertCircle } from "lucide-react";
+import {
+  Mail,
+  Facebook,
+  Linkedin,
+  Instagram,
+  Send,
+  AlertCircle,
+} from "lucide-react";
 
 interface FormErrors {
   name?: string;
@@ -22,6 +29,7 @@ export default function ContactPage() {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   function validate(): FormErrors {
     const errs: FormErrors = {};
@@ -36,7 +44,7 @@ export default function ContactPage() {
     return errs;
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length > 0) {
@@ -44,13 +52,36 @@ export default function ContactPage() {
       return;
     }
     setErrors({});
-    // Static-friendly: open mailto
-    const subject = encodeURIComponent(formData.subject);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\n\n${formData.message}`
-    );
-    window.location.href = `mailto:ngo.ydf@gmail.com?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "67305141-c101-4462-b7c5-37eea891b871",
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSubmitted(true);
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setErrors({ message: "Failed to send message. Please try again." });
+      }
+    } catch (error) {
+      setErrors({ message: "Failed to send message. Please try again." });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   const socialLinks = [
@@ -73,7 +104,10 @@ export default function ContactPage() {
 
   return (
     <>
-      <PageHeader title={t("contact_page_title")} description={t("contact_page_desc")} />
+      <PageHeader
+        title={t("contact_page_title")}
+        description={t("contact_page_desc")}
+      />
       <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
         <div className="grid gap-12 lg:grid-cols-2">
           {/* Form */}
@@ -88,7 +122,11 @@ export default function ContactPage() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
+              <form
+                onSubmit={handleSubmit}
+                noValidate
+                className="flex flex-col gap-5"
+              >
                 <div>
                   <label
                     htmlFor="contact-name"
@@ -109,7 +147,11 @@ export default function ContactPage() {
                     className="w-full rounded-lg border bg-card px-4 py-2.5 text-sm text-card-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
                   />
                   {errors.name && (
-                    <p id="name-error" className="mt-1 flex items-center gap-1 text-sm text-destructive" role="alert">
+                    <p
+                      id="name-error"
+                      className="mt-1 flex items-center gap-1 text-sm text-destructive"
+                      role="alert"
+                    >
                       <AlertCircle className="h-3.5 w-3.5" aria-hidden="true" />
                       {errors.name}
                     </p>
@@ -136,7 +178,11 @@ export default function ContactPage() {
                     className="w-full rounded-lg border bg-card px-4 py-2.5 text-sm text-card-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
                   />
                   {errors.email && (
-                    <p id="email-error" className="mt-1 flex items-center gap-1 text-sm text-destructive" role="alert">
+                    <p
+                      id="email-error"
+                      className="mt-1 flex items-center gap-1 text-sm text-destructive"
+                      role="alert"
+                    >
                       <AlertCircle className="h-3.5 w-3.5" aria-hidden="true" />
                       {errors.email}
                     </p>
@@ -159,11 +205,17 @@ export default function ContactPage() {
                       setFormData({ ...formData, subject: e.target.value })
                     }
                     aria-invalid={!!errors.subject}
-                    aria-describedby={errors.subject ? "subject-error" : undefined}
+                    aria-describedby={
+                      errors.subject ? "subject-error" : undefined
+                    }
                     className="w-full rounded-lg border bg-card px-4 py-2.5 text-sm text-card-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
                   />
                   {errors.subject && (
-                    <p id="subject-error" className="mt-1 flex items-center gap-1 text-sm text-destructive" role="alert">
+                    <p
+                      id="subject-error"
+                      className="mt-1 flex items-center gap-1 text-sm text-destructive"
+                      role="alert"
+                    >
                       <AlertCircle className="h-3.5 w-3.5" aria-hidden="true" />
                       {errors.subject}
                     </p>
@@ -186,11 +238,17 @@ export default function ContactPage() {
                       setFormData({ ...formData, message: e.target.value })
                     }
                     aria-invalid={!!errors.message}
-                    aria-describedby={errors.message ? "message-error" : undefined}
+                    aria-describedby={
+                      errors.message ? "message-error" : undefined
+                    }
                     className="w-full resize-y rounded-lg border bg-card px-4 py-2.5 text-sm text-card-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
                   />
                   {errors.message && (
-                    <p id="message-error" className="mt-1 flex items-center gap-1 text-sm text-destructive" role="alert">
+                    <p
+                      id="message-error"
+                      className="mt-1 flex items-center gap-1 text-sm text-destructive"
+                      role="alert"
+                    >
                       <AlertCircle className="h-3.5 w-3.5" aria-hidden="true" />
                       {errors.message}
                     </p>
@@ -199,10 +257,13 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                  disabled={isSubmitting}
+                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send className="h-4 w-4" aria-hidden="true" />
-                  {t("contact_send")}
+                  {isSubmitting
+                    ? t("contact_sending") || "Sending..."
+                    : t("contact_send")}
                 </button>
               </form>
             )}

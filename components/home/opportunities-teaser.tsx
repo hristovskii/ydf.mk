@@ -7,7 +7,7 @@ import { FadeIn } from "@/components/animate";
 
 const roles = [
   { icon: Users, labelKey: "member", color: "bg-primary/10 text-primary" },
-  { icon: Briefcase, labelKey: "participant", color: "bg-teal/10 text-teal" },
+  // { icon: Briefcase, labelKey: "participant", color: "bg-teal/10 text-teal" },
   { icon: HandHeart, labelKey: "volunteer", color: "bg-warm/10 text-warm" },
   { icon: Award, labelKey: "intern", color: "bg-info/10 text-info" },
 ];
@@ -32,11 +32,10 @@ export function OpportunitiesTeaser() {
           {roles.map((role, i) => (
             <FadeIn key={role.labelKey} delay={i * 100} direction="up">
               <div className="group flex flex-col items-center gap-3 rounded-2xl border bg-card p-6 text-center transition-all hover:shadow-md hover:-translate-y-1">
-                <div className={`flex h-12 w-12 items-center justify-center rounded-xl transition-transform group-hover:scale-110 ${role.color}`}>
-                  <role.icon
-                    className="h-6 w-6"
-                    aria-hidden="true"
-                  />
+                <div
+                  className={`flex h-12 w-12 items-center justify-center rounded-xl transition-transform group-hover:scale-110 ${role.color}`}
+                >
+                  <role.icon className="h-6 w-6" aria-hidden="true" />
                 </div>
                 <span className="text-sm font-semibold text-card-foreground">
                   {t(role.labelKey)}
