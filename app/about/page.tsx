@@ -119,7 +119,7 @@ export default function AboutPage() {
             </h2>
           </FadeIn>
           <div className="flex justify-center">
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-6 w-fit auto-cols-max sm:grid-cols-2 lg:grid-cols-4">
               {[
                 {
                   nameKey: "team_elena_name",

@@ -28,7 +28,7 @@ export function OpportunitiesTeaser() {
             </p>
           </div>
         </FadeIn>
-        <div className="mx-auto grid max-w-3xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-3xl gap-4 justify-center sm:grid-cols-2 lg:grid-cols-3">
           {roles.map((role, i) => (
             <FadeIn key={role.labelKey} delay={i * 100} direction="up">
               <div className="group flex flex-col items-center gap-3 rounded-2xl border bg-card p-6 text-center transition-all hover:shadow-md hover:-translate-y-1">

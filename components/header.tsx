@@ -28,14 +28,14 @@ const navItems: NavItem[] = [
     labelKey: "nav_organization",
     children: [
       { labelKey: "nav_about", href: "/about" },
-      { labelKey: "nav_projects", href: "/projects" },
+      // { labelKey: "nav_projects", href: "/projects" },
     ],
   },
   {
     labelKey: "nav_for_youth",
     children: [
       { labelKey: "nav_opportunities", href: "/opportunities" },
-      { labelKey: "nav_events", href: "/events" },
+      // { labelKey: "nav_events", href: "/events" },
       { labelKey: "nav_news", href: "/news" },
     ],
   },

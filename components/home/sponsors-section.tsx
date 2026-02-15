@@ -17,6 +17,10 @@ const sponsors = [
   { name: "Studentarija", src: "/images/sponsors/studentarija.png" },
   { name: "Tikves", src: "/images/sponsors/tikves-logo.png" },
   { name: "USS", src: "/images/sponsors/uss.png" },
+  { name: "Kombo", src: "/images/sponsors/kombo.jpeg" },
+  { name: "Mzmp", src: "/images/sponsors/mzmp.png" },
+  { name: "Dijabet", src: "/images/sponsors/dijabet.jpg" },
+  { name: "Yes For Less", src: "/images/sponsors/yes_for_less.png" },
 ];
 
 export function SponsorsSection() {
@@ -37,12 +41,12 @@ export function SponsorsSection() {
             {sponsors.map((sponsor) => (
               <div
                 key={sponsor.name}
-                className="flex items-center justify-center rounded-xl bg-card px-6 py-4 shadow-sm"
+                className="flex items-center justify-center rounded-full bg-card px-6 py-4 shadow-sm"
               >
                 <img
                   src={sponsor.src}
                   alt={sponsor.name}
-                  className="h-20 w-auto object-contain opacity-80 transition-opacity hover:opacity-100 md:h-24"
+                  className="h-20 w-auto object-contain opacity-80 rounded-full transition-opacity hover:opacity-100 md:h-24"
                   loading="lazy"
                   decoding="async"
                 />
@@ -52,12 +56,12 @@ export function SponsorsSection() {
               <div
                 key={`${sponsor.name}-${index}-duplicate`}
                 aria-hidden="true"
-                className="flex items-center justify-center rounded-xl bg-card px-6 py-4 shadow-sm"
+                className="flex items-center justify-center rounded-full bg-card px-6 py-6 shadow-sm"
               >
                 <img
                   src={sponsor.src}
-                  alt=""
-                  className="h-20 w-auto object-contain opacity-80 md:h-24"
+                  alt={sponsor.name}
+                  className="h-20 w-auto object-contain opacity-80 md:h-24 rounded-full"
                   loading="lazy"
                   decoding="async"
                 />
