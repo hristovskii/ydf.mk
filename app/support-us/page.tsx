@@ -59,10 +59,7 @@ export default function SupportUsPage() {
               className="flex flex-col gap-4 rounded-2xl border bg-card p-8"
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-                <opt.icon
-                  className="h-6 w-6 text-primary"
-                  aria-hidden="true"
-                />
+                <opt.icon className="h-6 w-6 text-primary" aria-hidden="true" />
               </div>
               <h2 className="text-xl font-bold text-card-foreground">
                 {t(opt.titleKey)}
@@ -104,10 +101,7 @@ export default function SupportUsPage() {
                 className="ml-auto shrink-0 rounded-md p-1 text-muted-foreground transition-colors hover:text-foreground"
               >
                 {copied ? (
-                  <Check
-                    className="h-4 w-4 text-primary"
-                    aria-hidden="true"
-                  />
+                  <Check className="h-4 w-4 text-primary" aria-hidden="true" />
                 ) : (
                   <Copy className="h-4 w-4" aria-hidden="true" />
                 )}
