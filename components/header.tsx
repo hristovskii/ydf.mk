@@ -287,7 +287,7 @@ export function Header() {
             <img
               src="/images/ydf-white.png"
               alt=""
-              className="h-9 w-9 object-contain"
+              className="h-9 w-9 object-contain rounded-full border-2 border-primary-foreground"
             />
             <span className="hidden text-lg font-bold text-primary-foreground sm:inline">
               YDF.MK

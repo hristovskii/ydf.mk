@@ -36,12 +36,12 @@ export function Footer() {
               <img
                 src="/images/ydfmk.png"
                 alt=""
-                className="h-10 w-10 rounded-full dark:hidden"
+                className="h-10 w-10 rounded-full b dark:hidden"
               />
               <img
                 src="/images/ydf-white.png"
                 alt=""
-                className="hidden h-10 w-10 rounded-full dark:block"
+                className="hidden h-10 w-10 rounded-full border-2 border-primary-foreground dark:block"
               />
               <span className="text-lg font-bold">YDF.MK</span>
             </Link>

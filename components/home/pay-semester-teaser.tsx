@@ -59,7 +59,7 @@ export function PaySemesterTeaser() {
                   className="text-5xl font-bold text-primary-foreground"
                 />
                 <p className="mt-2 text-sm font-medium text-primary-foreground/80">
-                  {t("hero_stat_youth")}
+                  {t("hero_stat_programs")}
                 </p>
               </div>
             </div>
